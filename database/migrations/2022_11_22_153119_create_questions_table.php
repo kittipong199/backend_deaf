@@ -13,19 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coures', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('couresname');
+            $table->integer('coure_id');
+            $table->string('questionText')->max(100);;
+            $table->string('questionVideo');
             $table->timestamps();
         });
-
     }
-
-    // //  $table->id();
-    // $table->integer('coure_id');
-    // $table->string('question_text');
-    // $table->string('question_video');
-    // $table->timestamps();
 
     /**
      * Reverse the migrations.
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coures');
+        Schema::dropIfExists('questions');
     }
 };

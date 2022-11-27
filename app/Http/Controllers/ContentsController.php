@@ -77,9 +77,9 @@ class ContentsController extends Controller
 
         $file2->move($path2,$fileName2);
 
-
+            /// ส่วน save ข้อมูล ลง DB
         $content = new Contents();
-        $content->coure_id = $coures->id;
+        $content->coure_id = $coures->id; // get id from Pk coures table
         $content->coure_id = $request->input('coure_id');
         $content->contentname = $request->input('contentname');
         $content->video = $fileName2;

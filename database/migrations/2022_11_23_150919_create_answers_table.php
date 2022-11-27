@@ -13,19 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coures', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('couresname');
+            $table->integer('question_id');
+            $table->string('answerText')->max(100);;
+            $table->string('answerVideo');
+            $table->tinyInteger('correct')->max(2)->default(0);
             $table->timestamps();
         });
-
     }
-
-    // //  $table->id();
-    // $table->integer('coure_id');
-    // $table->string('question_text');
-    // $table->string('question_video');
-    // $table->timestamps();
 
     /**
      * Reverse the migrations.
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coures');
+        Schema::dropIfExists('answers');
     }
 };

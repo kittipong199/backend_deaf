@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ContentsResource;
-use App\Models\contents;
+use App\Models\Answers;
 use Illuminate\Http\Request;
 
-class ContentApiController extends Controller
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,18 @@ class ContentApiController extends Controller
      */
     public function index()
     {
-        ////แสดง ผล Content
-        $content = contents::get();
+        //
+        return view('template.aswer');
+    }
 
-        //return data
-        return response()->json(['get data from coures successfuly', ContentsResource::collection($content)]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -30,30 +36,39 @@ class ContentApiController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contents  $contents
+     * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function show(Contents $contents,$id)
+    public function show(Answers $answers)
     {
-        // get by ID and join table coures with contents
-       
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Answers  $answers
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Answers $answers)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contents  $contents
+     * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contents $contents)
+    public function update(Request $request, Answers $answers)
     {
         //
     }
@@ -61,10 +76,10 @@ class ContentApiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contents  $contents
+     * @param  \App\Models\Answers  $answers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contents $contents)
+    public function destroy(Answers $answers)
     {
         //
     }
