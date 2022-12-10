@@ -1,7 +1,9 @@
 <?php
 
+
 use App\Http\Controllers\ContentApiController;
 use App\Http\Controllers\CouresApiController;
+use App\Http\Controllers\QuestionApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::resource('couresname',CouresApiController::class);
 Route::resource('content',ContentApiController::class);
-
+Route::resource('question',QuestionApi::class);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

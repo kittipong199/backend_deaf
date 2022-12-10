@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coures;
+use App\Models\Contents;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\DB;
 
 class CouresControllers extends Controller
@@ -14,14 +16,18 @@ class CouresControllers extends Controller
     // index
     public function index(){
 
-        return view('template.index');
+        // $contentShow= Contents::all();
+        // return view('template.coures',compact('contentShow') );
+        $coureList=Coures::all();
+        return view('template.coures',compact('coureList'));
     }
 
     // show template coures
 
     public function show(){
 
-        return view('template.coures');
+        // $coureList=Coures::all();
+        // return view('template.coures',compact('coureList'));
     }
 
 ////////////////////////////////////////////////////
@@ -30,8 +36,14 @@ class CouresControllers extends Controller
     public function create(Request $request){
 
         $request->validate([
-            'couresname' => 'required|string|unique:coures',// ต้องป้อนข้อมูลมา|ต้องเป็นข้อความ|ห้ามซ้ำ
-        ]);
+            'couresname' => 'required|string|unique:coures|max:255',// ต้องป้อนข้อมูลมา|ต้องเป็นข้อความ|ห้ามซ้ำ
+        ],
+        [
+            'couresname.required' => "กรุณาใส่ชื่อคอร์ส",
+            'couresname.unique' => "มีข้อมูลนี้แล้ว",
+            'couresname.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+        ]
+    );
 
         $coures = new Coures();
         $coures->couresname = $request->input('couresname');
@@ -40,6 +52,6 @@ class CouresControllers extends Controller
 
 
 
-        return redirect()->route('showcoures')->with('success', 'Coures create Successfully.');
+        return redirect()->back()->with('success', 'Coures create Successfully.');
     }
 }

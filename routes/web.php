@@ -4,7 +4,7 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\CouresControllers;
 use App\Http\Controllers\ContentsController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\QuizController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +26,10 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/',[CouresControllers::class,'index']);
+Route::get('/',[CouresControllers::class,'index'])->name('showcoures');
 
 ///  Coures Template
-Route::get('/coures',[CouresControllers::class,'show'])->name('showcoures');
+// Route::get('/coures',[CouresControllers::class,'show'])->name('showcoures');
 Route::post('/create',[CouresControllers::class,'create'])->name('addCoures');
 
 // Content Template
@@ -43,7 +43,7 @@ Route::get('/showquiz',[QuestionController::class,'index'])->name('showquiz');
 Route::post('/addquiz',[QuestionController::class,'store'])->name('createquiz');
 //  Aswers
 Route::get('/showanswer',[AnswerController::class,'index'])->name('showanswer');
-// Route::post('/addAnswer',[AnswerController::class,'store'])->name('creatanswer');
+Route::post('/addAnswer',[AnswerController::class,'store'])->name('creatanswer');
 
 
 

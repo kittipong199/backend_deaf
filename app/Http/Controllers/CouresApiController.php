@@ -19,7 +19,7 @@ class CouresApiController extends Controller
         $coures = coures::get();
 
         //return data
-        return response()->json(['get data from coures successfuly', CouresResource::collection($coures)]);
+        return response()->json(CouresResource::collection($coures));
     }
 
     /**

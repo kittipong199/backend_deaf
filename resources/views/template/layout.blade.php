@@ -32,6 +32,7 @@
             @yield('content')
             @yield('quizAswer')
             @yield('aswer')
+           
 
         </div>
     </body>

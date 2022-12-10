@@ -17,9 +17,8 @@ class ContentApiController extends Controller
     {
         ////แสดง ผล Content
         $content = contents::get();
-
         //return data
-        return response()->json(['get data from coures successfuly', ContentsResource::collection($content)]);
+        return response()->json(ContentsResource::collection($content));
     }
 
     /**
@@ -42,7 +41,7 @@ class ContentApiController extends Controller
     public function show(Contents $contents,$id)
     {
         // get by ID and join table coures with contents
-       
+
 
     }
 
